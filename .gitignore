@@ -7,7 +7,6 @@ data/processed/*
 !data/processed/.gitkeep
 models/*.keras
 logs/
-reports/*.png
 thesis/*.aux
 thesis/*.log
 thesis/*.out
