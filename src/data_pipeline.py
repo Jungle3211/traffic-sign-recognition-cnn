@@ -114,8 +114,8 @@ class TrafficSignDataPipeline:
 
             # Optimize pipeline performance
             train_ds = train_ds.prefetch(buffer_size=autotune)
-            val_ds = val_ds.cache().prefetch(buffer_size=autotune)
-            test_ds = test_ds.cache().prefetch(buffer_size=autotune)
+            val_ds = val_ds.prefetch(buffer_size=autotune)
+            test_ds = test_ds.prefetch(buffer_size=autotune)
 
             logging.info("Pipeline successfully created and optimized.")
             return train_ds, val_ds, test_ds, class_weights, raw_train_ds.class_names

@@ -8,6 +8,16 @@ from pathlib import Path
 import keras
 from keras import layers, models, optimizers, callbacks
 from data_pipeline import TrafficSignDataPipeline
+import tensorflow as tf
+
+# Enable dynamic GPU memory allocation for WSL2 constraints
+physical_devices = tf.config.list_physical_devices('GPU')
+if physical_devices:
+    try:
+        for gpu in physical_devices:
+            tf.config.experimental.set_memory_growth(gpu, True)
+    except RuntimeError as e:
+        logging.error(f"Cannot set memory growth: {e}")
 
 logging.basicConfig(
     level=logging.INFO,
